@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/signup.css" rel="stylesheet">
+  <title>Sign up</title>
+</head>
+
+<body>
+  <main>
+    <% if(messages.info){ %>
+      <div class="flash__message">
+        <%= messages.info %>
+      </div>
+      <% } %>
+        <h1 class="title">Sign up</h1>
+        <form class="card" action="/signup" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <label class="card__label" for="user_name">Username:</label><br>
+          <input class="card__input" type="text" name="user_name"><br>
+          <label class="card__label" for="email">Email:</label><br>
+          <input class="card__input" type="text" id="email" name="email"><br>
+          <label class="card__label" for="password">Password:</label><br>
+          <input class="card__input" type="password" id="password" name="password"><br>
+          <label class="card__label" for="confirm_password">Confirm password:</label><br>
+          <input class="card__input" type="password" name="confirm_password"><br>
+          <label class="card__label" for="user_img_url">Insert your image url here:</label><br>
+          <input class="card__input" type="text" name="user_img_url"><br>
+          <button class="card__btn" type="submit">Send</button>
+        </form>
+        <div class="footer">
+          <p>Already have the account? Log in <a class="footer__link" href="/login-view">here!</a></p>
+        </div>
+  </main>
+</body>
+
+</html>
