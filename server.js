@@ -23,7 +23,7 @@ const server = http.createServer(app);
 // });
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "https://socializard-client.herokuapp.com"],
   optionsSuccessStatus: 200,
   credentials: true,
 };
@@ -74,7 +74,6 @@ const commentsRoute = require("./routes/comments.route");
 const profileRoute = require("./routes/profile.route");
 const userRoute = require("./routes/user.route");
 
-
 app.use(profileRoute);
 app.use(postRoutes);
 app.use(authRoutes);
@@ -82,7 +81,6 @@ app.use(friendsRoute);
 app.use(messagesRoute);
 app.use(commentsRoute);
 app.use(userRoute);
-
 
 //socket.io
 const io = (path) =>
@@ -97,9 +95,6 @@ const inboxIo = io("/inbox");
 const { messagesSocket } = require("./controllers/message.controller");
 
 messagesSocket(inboxIo);
-
-
-
 
 app.use((req, res, next) => {
   res.send("Route not found!");
