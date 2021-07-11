@@ -46,7 +46,7 @@ exports.login = async (req, res, next) => {
       expiresIn: 86400,
     });
 
-    res.cookie("token", token, { httpOnly: true, sameSite: 'none' });
+    res.cookie("token", token, { httpOnly: true, sameSite: 'none', secure: true });
 
     res.json({ token });
   } catch (err) {
