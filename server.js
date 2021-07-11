@@ -51,7 +51,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      sameSite: 'none',
+      sameSite: "none",
       secure: true,
       maxAge: 1000 * 60 * 60 * 24,
     },
@@ -88,7 +88,10 @@ app.use(userRoute);
 const io = (path) =>
   require("socket.io")(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: [
+        "http://localhost:3000",
+        "https://socializard-client.herokuapp.com",
+      ],
     },
     path,
   });
